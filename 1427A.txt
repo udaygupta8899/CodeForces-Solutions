@@ -1,0 +1,49 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+            int n = sc.nextInt();
+            ArrayList<Integer> pos = new ArrayList<Integer>();
+            ArrayList<Integer> neg = new ArrayList<Integer>();
+            long psum = 0; long nsum = 0;
+            for(int i = 0 ; i< n ; i++) {
+                int l = sc.nextInt();
+                if(l < 0) {
+                    neg.add(l);
+                    nsum+= l;
+                }
+                else {
+                    pos.add(l);
+                    psum += l;
+                }
+            }
+            if(Math.abs(nsum) == psum){
+                System.out.println("NO");
+            }
+            else{
+                System.out.println("YES");
+                pos.sort(Collections.reverseOrder());
+                if(psum>Math.abs(nsum)){
+                    for(int i: pos){
+                        System.out.print(i + " ");
+                    }
+                    for(int i:neg){
+                        System.out.print(i+ " ");
+                    }
+                }
+                else{
+                    for(int i:neg){
+                        System.out.print(i+ " ");
+                    }
+                    for(int i: pos){
+                        System.out.print(i + " ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+    }
+
+ }

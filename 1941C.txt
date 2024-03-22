@@ -1,0 +1,36 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            sc.nextLine();
+            String s = sc.nextLine();
+            int flag = 0;
+            boolean[] vis=new boolean[n];
+            if (n < 3) {
+                flag=0;
+            } else {
+                //map, pie
+                for (int i = 0;i < n - 2;i++) {
+                    if(vis[i]){
+                        continue;
+                    }
+                    char ch = s.charAt(i);
+                    if (ch == 'm' || ch == 'p') {
+                        String str = s.substring(i, i + 3);
+
+                        if (!vis[i] && !vis[i+1] && !vis[i+2] && str.compareTo("map") == 0 || str.compareTo("pie") == 0) {
+                            flag++;
+                            vis[i] = true;
+                            vis[i + 1] = true;
+                            vis[i + 2] = true;
+                        }
+                    }
+                }
+            }
+            System.out.println(flag);
+        }
+    }
+}

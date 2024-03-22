@@ -1,0 +1,42 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int c = sc.nextInt();
+            if(a==b && b==c && c==0){
+                System.out.println(0);
+                continue;
+            }
+            
+            if(b>0 && b<3 || b%3!=0){
+                int x = b%3;
+                x = 3-x;
+//                int y = b/3;
+
+                if(c<x) {
+                    System.out.println(-1);
+                    continue;
+                }
+                else{
+                    b = b + x;
+                    c = c - x;
+                }
+            }
+            int min = 0;
+            min+=a;
+            min+=(b/3);
+            int threes=0,twos=0,ones=0;
+            threes = c / 3;
+            c=c%3;
+            twos = c / 2;
+            c = c %2;
+            ones=c;
+            min+=ones+twos+threes;
+            System.out.println(min);
+        }
+    }
+}
